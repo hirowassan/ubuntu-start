@@ -24,3 +24,11 @@ sudo apt install docker-ce docker-ce-cli containerd.io
 LV_BRANCH='release-1.3/neovim-0.9' bash <(curl -s https://raw.githubusercontent.com/LunarVim/LunarVim/release-1.3/neovim-0.9/utils/installer/install.sh)
 export PATH="$HOME/.local/bin:$PATH"
 source ~/.bashrc
+
+cd ~ && mkdir font-temp
+cd font-temp
+wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/Agave.zip && unzip Agave.zip
+sudo mv AgaveNerdFont-Bold.ttf  AgaveNerdFont-Regular.ttf  AgaveNerdFontMono-Bold.ttf  AgaveNerdFontMono-Regular.ttf  AgaveNerdFontPropo-Bold.ttf  AgaveNerdFontPropo-Regular.ttf /usr/share/fonts/truetype/
+sudo fc-cache -f -v
+dconf write /org/gnome/desktop/interface/monospace-font-name "'Agave Nerd Font 12'"
+
