@@ -1,4 +1,4 @@
-sudo apt install git curl build-essential python3 python-is-python3 python3.10-venv python3-pip npm nodejs apt-transport-https ca-certificates curl software-properties-common default-jdk
+sudo apt install git curl build-essential python3 python-is-python3 python3.10-venv python3-pip npm nodejs apt-transport-https ca-certificates curl software-properties-common default-jdk zsh 
 sudo apt-get install ripgrep ninja-build gettext cmake unzip curl
 
 LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep -Po '"tag_name": "v\K[^"]*')
@@ -20,3 +20,6 @@ echo "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] 
 sudo apt update
 sudo apt upgrade
 sudo apt install docker-ce docker-ce-cli containerd.io
+
+LV_BRANCH='release-1.3/neovim-0.9' bash <(curl -s https://raw.githubusercontent.com/LunarVim/LunarVim/release-1.3/neovim-0.9/utils/installer/install.sh)
+export PATH="$HOME/.local/bin:$PATH"
