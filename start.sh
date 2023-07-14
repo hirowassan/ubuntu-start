@@ -26,6 +26,8 @@ echo "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] 
 sudo apt update
 sudo apt upgrade
 sudo apt install docker-ce docker-ce-cli containerd.io
+sudo usermod -aG docker $USER
+
 
 LV_BRANCH='release-1.3/neovim-0.9' bash <(curl -s https://raw.githubusercontent.com/LunarVim/LunarVim/release-1.3/neovim-0.9/utils/installer/install.sh)
 export PATH="$HOME/.local/bin:$PATH"
