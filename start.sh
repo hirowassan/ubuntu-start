@@ -1,4 +1,4 @@
-sudo apt install git curl build-essential python3 python-is-python3 python3.10-venv python3-pip npm nodejs apt-transport-https ca-certificates curl software-properties-common default-jdk zsh 
+sudo apt install git curl build-essential python3 python-is-python3 python3.10-venv python3-pip npm nodejs apt-transport-https ca-certificates curl software-properties-common default-jdk zsh flatpak
 sudo apt-get install ripgrep ninja-build gettext cmake unzip curl
 
 LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep -Po '"tag_name": "v\K[^"]*')
@@ -11,7 +11,11 @@ cd ~ && mkdir build
 cd build
 git clone https://github.com/neovim/neovim && cd neovim
 make CMAKE_BUILD_TYPE=RelWithDebInfo
-sudo make install
+
+wget -O discord.deb https://discordapp.com/api/download?platform=linux
+sudo dpkg -i discord.deb
+sudo apt-get install -f
+sudo dpkg -i discord.deb
 
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
@@ -31,4 +35,6 @@ wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/Agave.zip 
 sudo mv AgaveNerdFont-Bold.ttf  AgaveNerdFont-Regular.ttf  AgaveNerdFontMono-Bold.ttf  AgaveNerdFontMono-Regular.ttf  AgaveNerdFontPropo-Bold.ttf  AgaveNerdFontPropo-Regular.ttf /usr/share/fonts/truetype/
 sudo fc-cache -f -v
 dconf write /org/gnome/desktop/interface/monospace-font-name "'Agave Nerd Font 12'"
+cd ~
 
+flatpak install https://flathub.org/repo/appstream/org.gimp.GIMP.flatpakref
