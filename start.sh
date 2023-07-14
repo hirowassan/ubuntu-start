@@ -7,6 +7,8 @@ tar xf lazygit.tar.gz lazygit
 sudo install lazygit /usr/local/bin
 rm -rf lazygit.tar.gz lazygit
 
+git clone https://github.com/NvChad/NvChad ~/.config/nvim --depth 1 && nvim
+
 cd ~ && mkdir build
 cd build
 git clone https://github.com/neovim/neovim && cd neovim
