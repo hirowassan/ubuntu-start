@@ -7,6 +7,10 @@ tar xf lazygit.tar.gz lazygit
 sudo install lazygit /usr/local/bin
 rm -rf lazygit.tar.gz lazygit
 
+LV_BRANCH='release-1.3/neovim-0.9' bash <(curl -s https://raw.githubusercontent.com/LunarVim/LunarVim/release-1.3/neovim-0.9/utils/installer/install.sh)
+export PATH="$HOME/.local/bin:$PATH"
+source ~/.bashrc
+
 git clone https://github.com/NvChad/NvChad ~/.config/nvim --depth 1 && nvim
 
 cd ~ && mkdir build
@@ -27,11 +31,6 @@ sudo apt update
 sudo apt upgrade
 sudo apt install docker-ce docker-ce-cli containerd.io
 sudo usermod -aG docker $USER
-
-
-LV_BRANCH='release-1.3/neovim-0.9' bash <(curl -s https://raw.githubusercontent.com/LunarVim/LunarVim/release-1.3/neovim-0.9/utils/installer/install.sh)
-export PATH="$HOME/.local/bin:$PATH"
-source ~/.bashrc
 
 cd ~ && mkdir font-temp
 cd font-temp
