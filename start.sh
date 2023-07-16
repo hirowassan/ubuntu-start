@@ -7,21 +7,18 @@ tar xf lazygit.tar.gz lazygit
 sudo install lazygit /usr/local/bin
 rm -rf lazygit.tar.gz lazygit
 
+cd ~ && mkdir build
+cd build
+git clone https://github.com/neovim/neovim && cd neovim
+make CMAKE_BUILD_TYPE=RelWithDebInfo
+sudo make install
+
 LV_BRANCH='release-1.3/neovim-0.9' bash <(curl -s https://raw.githubusercontent.com/LunarVim/LunarVim/release-1.3/neovim-0.9/utils/installer/install.sh)
 export PATH="$HOME/.local/bin:$PATH"
 source ~/.bashrc
 
 git clone https://github.com/NvChad/NvChad ~/.config/nvim --depth 1 && nvim
 
-cd ~ && mkdir build
-cd build
-git clone https://github.com/neovim/neovim && cd neovim
-make CMAKE_BUILD_TYPE=RelWithDebInfo
-
-wget -O discord.deb https://discordapp.com/api/download?platform=linux
-sudo dpkg -i discord.deb
-sudo apt-get install -f
-sudo dpkg -i discord.deb
 
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
@@ -32,12 +29,17 @@ sudo apt upgrade
 sudo apt install docker-ce docker-ce-cli containerd.io
 sudo usermod -aG docker $USER
 
-cd ~ && mkdir font-temp
-cd font-temp
+cd ~ && mkdir temp
+cd temp
 wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/Agave.zip && unzip Agave.zip
 sudo mv AgaveNerdFont-Bold.ttf  AgaveNerdFont-Regular.ttf  AgaveNerdFontMono-Bold.ttf  AgaveNerdFontMono-Regular.ttf  AgaveNerdFontPropo-Bold.ttf  AgaveNerdFontPropo-Regular.ttf /usr/share/fonts/truetype/
 sudo fc-cache -f -v
-dconf write /org/gnome/desktop/interface/monospace-font-name "'Agave Nerd Font 12'"
+
+wget -O discord.deb https://discordapp.com/api/download?platform=linux
+sudo dpkg -i discord.deb
+sudo apt-get install -f
+sudo dpkg -i discord.deb
 cd ~
+rm -rf temp
 
 flatpak install https://flathub.org/repo/appstream/org.gimp.GIMP.flatpakref
