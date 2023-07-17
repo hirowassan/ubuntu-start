@@ -42,6 +42,14 @@ sudo dpkg -i discord.deb
 sudo apt-get install -f
 sudo dpkg -i discord.deb
 cd ~
+
+curl -sSL https://golang.org/dl/ | grep -oP '\/dl\/go[0-9\.]+\.linux-amd64.tar.gz' | head -n 1 | sed 's/^/https:\/\/golang.org/' | xargs curl -O -L
+tar -xvf go*.tar.gz
+sudo mv go /usr/local
+echo 'export GOPATH=$HOME/go' >> ~/.profile
+echo 'export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin' >> ~/.profile
+source ~/.profile
+
 rm -rf temp
 
 flatpak install https://flathub.org/repo/appstream/org.gimp.GIMP.flatpakref
