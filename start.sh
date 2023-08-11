@@ -1,7 +1,7 @@
-sudo apt update
-sudo apt upgrade
-sudo apt install git curl build-essential python3 python-is-python3 python3.10-venv python3-pip npm nodejs apt-transport-https ca-certificates software-properties-common default-jdk zsh flatpak cargo
-sudo apt-get install ripgrep ninja-build gettext cmake unzip curl
+sudo apt -y update
+sudo apt -y upgrade
+sudo apt -y install git curl build-essential python3 python-is-python3 python3.10-venv python3-pip npm nodejs apt-transport-https ca-certificates software-properties-common default-jdk zsh flatpak cargo
+sudo apt-get -y install ripgrep ninja-build gettext cmake unzip curl
 
 LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep -Po '"tag_name": "v\K[^"]*')
 curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"
@@ -26,9 +26,9 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
 echo "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-sudo apt update
-sudo apt upgrade
-sudo apt install docker-ce docker-ce-cli containerd.io
+sudo apt -y update
+sudo apt -y upgrade
+sudo apt -y install docker-ce docker-ce-cli containerd.io
 sudo usermod -aG docker $USER
 
 cd ~ && mkdir temp
@@ -39,7 +39,7 @@ sudo fc-cache -f -v
 
 wget -O discord.deb https://discordapp.com/api/download?platform=linux
 sudo dpkg -i discord.deb
-sudo apt-get install -f
+sudo apt-get -y install -f
 sudo dpkg -i discord.deb
 cd ~
 
